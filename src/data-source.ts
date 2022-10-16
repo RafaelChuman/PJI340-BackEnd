@@ -7,15 +7,20 @@ import { Treatments } from "@entity/treatments/Treatments";
 export const PostgresDS = new DataSource({
     //migrationsTableName: 'migrations-prod',
     type: "postgres",
-    host: "ec2-52-204-195-41.compute-1.amazonaws.com",
+    //host: "ec2-52-204-195-41.compute-1.amazonaws.com",
+    host: "127.0.0.1",
     port: 5432,
-    username: "komalpclvkhwde",
-    password: "3d2807ce80a01e796427cf2b22085899b10b1260778d97cbdfcac8f3242e0946",
-    database: "dcv7lr3ha5uogf",
+    // username: "komalpclvkhwde",
+    // password: "3d2807ce80a01e796427cf2b22085899b10b1260778d97cbdfcac8f3242e0946",
+    // database: "dcv7lr3ha5uogf",
+    //
+    username: "docker",
+    password: "test",
+    database: "pji340",
     name: "default",
     entities: [Products, Users, Categories, Treatments],
-    migrations: ["*.m.ts"],
-    ssl:{rejectUnauthorized:false}
+    migrations: ["./src/migration/*.m.ts"],
+    //ssl:{rejectUnauthorized:false}
     //migrationsRun: false,
     //migrationsTransactionMode: "all",
     //synchronize:false
