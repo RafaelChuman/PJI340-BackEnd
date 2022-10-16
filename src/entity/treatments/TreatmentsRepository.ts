@@ -11,7 +11,7 @@ export class TreatmentsRepository implements ITreatmentsRepository{
         
         newTreatment.treatmentsId =             data.treatmentsId;
         newTreatment.productsId =               data.productsId;
-        newTreatment.usersId =                  data.uersId;
+        newTreatment.clientsId =                 data.clientsId;
         newTreatment.quantityOfProduct =        data.quantityOfProduct;
         newTreatment.quantityOfProductPerDay =  data.quantityOfProductPerDay;
 
@@ -28,9 +28,9 @@ export class TreatmentsRepository implements ITreatmentsRepository{
         return treatment;
     }
 
-    async listTreatmentByUserId(data: IListTreatmentById): Promise<Treatments[]> {
+    async listTreatmentByClientId(data: IListTreatmentById): Promise<Treatments[]> {
         const treatment = await PostgresDS.manager.findBy(Treatments, {
-            usersId: data.id,
+            clientsId: data.id,
             isValid: data.isValid
         });
 
@@ -42,7 +42,7 @@ export class TreatmentsRepository implements ITreatmentsRepository{
 
         const query = PostgresDS.manager.createQueryBuilder(Treatments, "t")   
         .innerJoinAndSelect('t.products', 'p')
-        .innerJoinAndSelect('t.users', 'u')
+        .innerJoinAndSelect('t.clients', 'c')
         .where(`(('${dateAsString}'::date - "t"."createdAt"::date) * "t"."quantityOfProductPerDay") >=  ("t"."quantityOfProduct" * "p"."quantityValue")`)
         
     
@@ -70,7 +70,7 @@ export class TreatmentsRepository implements ITreatmentsRepository{
 
     async listTreatment(): Promise<Treatments[]|undefined> {
         //const treatments = await PostgresDS.manager.find(Treatments);
-        const query = PostgresDS.manager.createQueryBuilder<Treatments>('Treatments', 't').innerJoinAndSelect('t.products', 'p').innerJoinAndSelect('t.users', 'u'); // 'w.userId = u.id' may be omitted
+        const query = PostgresDS.manager.createQueryBuilder<Treatments>('Treatments', 't').innerJoinAndSelect('t.products', 'p').innerJoinAndSelect('t.clients', 'c'); // 'w.userId = u.id' may be omitted
         const treatments = await query.getMany();
 
         return treatments;

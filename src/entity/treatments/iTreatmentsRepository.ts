@@ -3,7 +3,7 @@ import { Treatments } from "./Treatments";
 
 interface ICreatTreatmentDTO{
     treatmentsId:string
-    uersId: string;
+    clientsId: string;
     productsId: string;
     quantityOfProduct: number;
     quantityOfProductPerDay: number;
@@ -24,7 +24,7 @@ interface ITreatmentsRepository{
     createTreatment(data: ICreatTreatmentDTO): Promise<Treatments>;
     listTreatment(): Promise<Treatments[]|undefined>;
     listTreatmentById(data: IListTreatmentById): Promise<Treatments | null>;
-    listTreatmentByUserId(data: IListTreatmentById): Promise<Treatments[] | null>;
+    listTreatmentByClientId(data: IListTreatmentById): Promise<Treatments[] | null>;
     deleteTreatmentById(data: IDeleteTreatmentDTO): Promise<DeleteResult>;
     listAllTreatmentsGroupedByMonth(): Promise<Treatments[]>;
     listAllTreatmentsProductToBuy(data:Date): Promise<Treatments[]>;

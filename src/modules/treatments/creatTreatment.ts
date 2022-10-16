@@ -13,7 +13,7 @@ export class CreateTreatment{
         datas.forEach(async data => {
             const newTreatment:ICreatTreatmentDTO = {
                 treatmentsId:               request.body.treatmentsId,
-                uersId:                     request.body.usersId,
+                clientsId:                  request.body.clientsId,
                 productsId:                 data.productsId,
                 quantityOfProduct:          data.quantityOfProduct,
                 quantityOfProductPerDay:    data.quantityOfProductPerDay

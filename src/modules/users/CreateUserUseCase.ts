@@ -7,22 +7,18 @@ import { UsersRepository } from "@src/entity/Users/UsersRepository";
 class CreateUserUseCase {
   async execute(request: Request, response: Response): Promise<Response> {
     const data: ICreateUserDTO = {
-      cellphone: request.body.cellphone,
-      cep: request.body.cep,
       name: request.body.name,
-      numberAddress: request.body.numberAddress,
-      whatsApp: request.body.whatsApp,
       password: request.body.password,
       userName: request.body.userName,
+      isAdmin: false,
     };
     const usersRepository = new UsersRepository();
 
-    if (!data.password || !data.userName) {
-      data.password = data.name.toLowerCase().replace(" ", "");
-      data.userName = data.name.toLowerCase().replace(" ", "");
-    }
-
     const userNameAlredyExist = await usersRepository.findByUserName(data.userName);
+
+    if (!data.password || !data.userName ) {
+      throw new AppError("Data out of bounds.");
+    }
 
     if (userNameAlredyExist) {
       throw new AppError("User Already Exists.");

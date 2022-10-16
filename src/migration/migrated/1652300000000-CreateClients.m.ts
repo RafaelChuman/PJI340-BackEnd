@@ -1,13 +1,13 @@
 import { MigrationInterface, QueryRunner, Table, TableIndex } from "typeorm"
 
-export class CreateUsers1652238152394 implements MigrationInterface {
+export class CreateClients1652238152394 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         
         await queryRunner.createTable(
             new Table(
                 {
-                    name:"Users",
+                    name:"Clients",
                     columns: [
                         {
                             name: "id",
@@ -16,14 +16,6 @@ export class CreateUsers1652238152394 implements MigrationInterface {
                         },
                         {
                             name: "name",
-                            type: "varchar",
-                        },
-                        {
-                            name: "userName",
-                            type: "varchar",
-                        },
-                        {
-                            name: "password",
                             type: "varchar",
                         },
                         {
@@ -41,10 +33,6 @@ export class CreateUsers1652238152394 implements MigrationInterface {
                         {
                             name: "whatsApp",
                             type: "varchar",
-                        },   
-                        {
-                            name: "isAdmin",
-                            type: "boolean",
                         },                                                            
                         {
                             name: "created_at",
@@ -56,10 +44,10 @@ export class CreateUsers1652238152394 implements MigrationInterface {
         );
 
         await queryRunner.createIndex(
-            "Users",
+            "Clients",
             new TableIndex({
-                name: "IDX_USERS_NAME",
-                columnNames: ["userName"],
+                name: "IDX_CLIENTS_NAME",
+                columnNames: ["name"],
             })
         );
     }
@@ -67,9 +55,9 @@ export class CreateUsers1652238152394 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
     
     
-        await queryRunner.dropIndex("Users", "IDX_USER_NAME");
+        await queryRunner.dropIndex("Clients", "IDX_CLIENTS_NAME");
         
-        await queryRunner.dropTable("Users");
+        await queryRunner.dropTable("Clients");
 
     }
 

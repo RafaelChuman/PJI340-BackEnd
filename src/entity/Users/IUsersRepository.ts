@@ -4,10 +4,7 @@ interface ICreateUserDTO {
   name: string;
   userName: string;
   password: string;
-  cep: string;
-  numberAddress: string;
-  cellphone: string;
-  whatsApp: string;
+  isAdmin: boolean;
 }
 
 interface IAuthenticateUserDTO{

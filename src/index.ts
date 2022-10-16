@@ -7,6 +7,8 @@ import { authenticateRoutes } from "@routes/authenticate.routes";
 import { categoriesRoutes } from "@routes/categories.routes";
 import { treatmentsRoutes } from "./routes/treatments.routes";
 import { ensureAuthenticated } from "./midlewares/ensureAuthenticated";
+import { clientsRoutes } from "./routes/clients.routes";
+import { ensureIsAdmin } from "./midlewares/ensureIsAdmin";
 
 const app = express();
 
@@ -17,12 +19,14 @@ app.use(express.json());
 
 app.use(authenticateRoutes);
 
-app.use(ensureAuthenticated);
+
 
 app.use("/users", usersRoutes);
 
-//Midleware para validar a autenticação de todas as rotas seguintes
+app.use(ensureAuthenticated);
 
+//Midleware para validar a autenticação de todas as rotas seguintes
+app.use("/clients", clientsRoutes);
 
 app.use("/products", productsRoutes);
 app.use("/categories", categoriesRoutes);

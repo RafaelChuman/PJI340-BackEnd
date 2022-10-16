@@ -1,7 +1,6 @@
-import { usersRoutes } from "@src/routes/users.routes";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 import {v4 as uuidv4} from "uuid";
-import { Users } from "@src/entity/Users/Users";
+import { Clients } from "@src/entity/Clients/Clients";
 import { Products } from "@entity/products/Products";
 
 
@@ -15,14 +14,14 @@ export class Treatments{
     treatmentsId: string
 
     @Column()
-    usersId: string;
+    clientsId: string;
 
     @Column()
     productsId: string;
     
-    @ManyToOne(() => Users)
-    @JoinColumn({name:"usersId"})
-    users: Users;
+    @ManyToOne(() => Clients)
+    @JoinColumn({name:"clientsId"})
+    clients: Clients;
     
     @ManyToOne(() => Products)
     @JoinColumn({name:"productsId"})

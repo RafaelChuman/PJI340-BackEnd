@@ -11,10 +11,7 @@ class UsersRepository implements IUsersRepository {
     user.name = data.name;
     user.userName = data.userName;
     user.password = data.password;
-    user.cep = data.cep;
-    user.numberAddress = data.numberAddress;
-    user.cellphone = data.cellphone;
-    user.whatsApp = data.whatsApp;
+    user.isAdmin = data.isAdmin;
 
     await PostgresDS.manager.save(user);
 

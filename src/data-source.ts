@@ -3,6 +3,7 @@ import { Users } from "@src/entity/Users/Users";
 import { DataSource } from "typeorm";
 import { Categories } from "@entity/categories/categories";
 import { Treatments } from "@entity/treatments/Treatments";
+import { Clients } from "./entity/Clients/Clients";
 
 export const PostgresDS = new DataSource({
     //migrationsTableName: 'migrations-prod',
@@ -18,7 +19,7 @@ export const PostgresDS = new DataSource({
     password: "test",
     database: "pji340",
     name: "default",
-    entities: [Products, Users, Categories, Treatments],
+    entities: [Products, Users, Clients,Categories, Treatments],
     migrations: ["./src/migration/*.m.ts"],
     //ssl:{rejectUnauthorized:false}
     //migrationsRun: false,

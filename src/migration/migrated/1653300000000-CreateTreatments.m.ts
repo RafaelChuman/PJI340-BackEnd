@@ -16,7 +16,7 @@ export class CreateTreatments1653322321419 implements MigrationInterface {
                     type: "uuid",
                 },
                 {
-                    name: "usersId",
+                    name: "clientsId",
                     type: "uuid",
                     isNullable: false,
                 },
@@ -62,10 +62,10 @@ export class CreateTreatments1653322321419 implements MigrationInterface {
         await queryRunner.createForeignKey(
             "Treatments",
             new TableForeignKey({
-                name:"FK_TREATMENTS_USERSID",
-                columnNames: ["usersId"],
+                name:"FK_TREATMENTS_CLIENTSID",
+                columnNames: ["clientsId"],
                 referencedColumnNames: ["id"],
-                referencedTableName: "Users",
+                referencedTableName: "Clients",
                 onDelete: "CASCADE",
             }),
         );
@@ -84,7 +84,7 @@ export class CreateTreatments1653322321419 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         
-        await queryRunner.dropForeignKey("Treatments", "FK_TREATMENTS_USERSID");
+        await queryRunner.dropForeignKey("Treatments", "FK_TREATMENTS_CLIENTSID");
 
         await queryRunner.dropForeignKey("Treatments", "FK_TREATMENTS_PRODUCTSID");
 
