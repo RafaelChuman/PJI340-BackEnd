@@ -1,8 +1,8 @@
 import { hash } from "bcrypt";
 import { AppError } from "@errors/AppError";
 import { Response, Request } from "express";
-import { ICreateClientDTO } from "@src/entity/Clients/IClientsRepository";
-import { ClientsRepository } from "@src/entity/Clients/ClientsRepository";
+import { ICreateClientDTO } from "@src/entity/Collaborators/ICollaboratorsRepository";
+import { ClientsRepository } from "@src/entity/Collaborators/collaboratorsRepository";
 
 class CreateClientUseCase {
   async execute(request: Request, response: Response): Promise<Response> {

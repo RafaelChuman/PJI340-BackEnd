@@ -1,4 +1,4 @@
-import { TreatmentsRepository } from "@src/entity/treatments/TreatmentsRepository";
+import { TreatmentsRepository } from "@src/entity/ERs/ERsRepository";
 import { Request, Response } from "express";
 
 export class ListTreatments {

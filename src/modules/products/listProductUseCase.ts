@@ -1,5 +1,5 @@
-import { Products } from "@entity/products/Products";
-import { ProductRepository } from "@entity/products/ProductsRepository";
+import { Products } from "@src/entity/LubricationSystemServices/lubricationSystemServices";
+import { ProductRepository } from "@src/entity/LubricationSystemServices/lubricationSystemServicesRepository";
 import { Response, Request } from "express";
 
 

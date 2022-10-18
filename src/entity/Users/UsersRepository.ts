@@ -26,15 +26,15 @@ class UsersRepository implements IUsersRepository {
 
   async listAllUsersGroupedByMonth(): Promise<Users[]> {
     const query = PostgresDS.manager.createQueryBuilder(Users, "Users")
-    .select(`count(id), DATE_TRUNC('month', "created_at")`)
-    .where(`date_part('year', created_at) = date_part('year', CURRENT_DATE)`)
-    .groupBy(`DATE_TRUNC('month', "created_at")`)
+    .select(`count(id), DATE_TRUNC('month', "createdAt")`)
+    .where(`date_part('year', createdAt) = date_part('year', CURRENT_DATE)`)
+    .groupBy(`DATE_TRUNC('month', "createdAt")`)
 
     // const users = await PostgresDS.manager.findBy(Users, {
     const users = await query.execute();
     
     
-    //   created_at: Raw((alias) => `${alias} > :date`, {
+    //   createdAt: Raw((alias) => `${alias} > :date`, {
     //     date: `${today.getFullYear()}-${today.getMonth()}-01`,
     //   }),
     // });

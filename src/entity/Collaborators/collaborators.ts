@@ -1,9 +1,9 @@
 import { v4 as uuidV4 } from "uuid";
 import { Entity, PrimaryGeneratedColumn, CreateDateColumn, Column, PrimaryColumn, ManyToOne, OneToMany} from "typeorm";
-import { Treatments } from "@entity/treatments/Treatments";
+import { LubricationSystemServices } from "../LubricationSystemServices/lubricationSystemServices";
 
-@Entity("Clients")
-export class Clients {
+@Entity("Collaborators")
+export class Collaborators {
 
     @PrimaryColumn()
     id: string
@@ -24,10 +24,10 @@ export class Clients {
     whatsApp: string
 
     @CreateDateColumn()
-    created_at: Date
+    createdAt: Date
 
-    @OneToMany(()=>Treatments, treatments => treatments.clientsId)
-    treatments: Treatments[];
+    @OneToMany(()=>LubricationSystemServices, lubrificationSystemServices => lubrificationSystemServices.collaborator)
+    lubrificationSystemServices: LubricationSystemServices[];
 
     constructor(){
         if(!this.id)

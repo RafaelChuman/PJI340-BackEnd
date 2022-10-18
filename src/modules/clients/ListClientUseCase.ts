@@ -1,4 +1,4 @@
-import { ClientsRepository } from "@src/entity/Clients/ClientsRepository";
+import { ClientsRepository } from "@src/entity/Collaborators/collaboratorsRepository";
 import { AppError } from "@src/errors/AppError";
 import { Response, Request } from "express";
 

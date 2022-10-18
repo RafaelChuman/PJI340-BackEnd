@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
-import { Products } from "../products/Products";
+import { LubricationSystemServices } from "../LubricationSystemServices/lubricationSystemServices";
 
-@Entity("Categories")
-export class Categories
+@Entity("Activities")
+export class Activities
 {
 
     @PrimaryColumn()
@@ -15,8 +15,8 @@ export class Categories
     @CreateDateColumn()
     createdAt: Date
 
-    @OneToMany(()=> Products, (products) => products.categoriesId)
-    products: Products[]
+    @OneToMany(()=> LubricationSystemServices, (lubricationSystemServices) => lubricationSystemServices.activity)
+    lubricationSystemServices: LubricationSystemServices[]
 
     constructor()
     {

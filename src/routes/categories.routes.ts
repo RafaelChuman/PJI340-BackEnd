@@ -1,16 +1,16 @@
 import { ensureAuthenticated } from "@src/midlewares/ensureAuthenticated";
 import { ensureIsAdmin } from "@src/midlewares/ensureIsAdmin";
-import { createCategory, listCategories } from "@src/modules/categories";
+import { createActivity, listActivities } from "@src/modules/activities";
 import { Router } from "express";
 
-const categoriesRoutes = Router();
+const activitiesRoutes = Router();
 
-categoriesRoutes.post("/", ensureIsAdmin, (request, response) =>
-    createCategory.handle( request, response)
+activitiesRoutes.post("/", ensureIsAdmin, (request, response) =>
+    createActivity.handle( request, response)
 );
 
-categoriesRoutes.get("/", (request, response) =>
-    listCategories.handle( request, response)
+activitiesRoutes.get("/", (request, response) =>
+    listActivities.handle( request, response)
 );
 
-export {categoriesRoutes}
+export {activitiesRoutes}

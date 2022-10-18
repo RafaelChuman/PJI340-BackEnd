@@ -4,7 +4,7 @@ import cors from 'cors';
 import { usersRoutes } from "@routes/users.routes";
 import { productsRoutes } from "@routes/products.routes";
 import { authenticateRoutes } from "@routes/authenticate.routes";
-import { categoriesRoutes } from "@routes/categories.routes";
+import { activitiesRoutes } from "@routes/categories.routes";
 import { treatmentsRoutes } from "./routes/treatments.routes";
 import { ensureAuthenticated } from "./midlewares/ensureAuthenticated";
 import { clientsRoutes } from "./routes/clients.routes";
@@ -29,7 +29,7 @@ app.use(ensureAuthenticated);
 app.use("/clients", clientsRoutes);
 
 app.use("/products", productsRoutes);
-app.use("/categories", categoriesRoutes);
+app.use("/activities", activitiesRoutes);
 app.use("/treatments", treatmentsRoutes);
 
 

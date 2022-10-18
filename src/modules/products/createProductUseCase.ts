@@ -1,6 +1,6 @@
 
-import { IProductsRepository, ICreateProductDTO } from "@entity/products/IProductsRepository";
-import { ProductRepository } from "@src/entity/products/ProductsRepository";
+import { IProductsRepository, ICreateProductDTO } from "@src/entity/LubricationSystemServices/ILubricationSystemServicesRepository";
+import { ProductRepository } from "@src/entity/LubricationSystemServices/lubricationSystemServicesRepository";
 import { Response, Request, response } from "express";
 
 

@@ -1,5 +1,5 @@
-import { ICreatTreatmentDTO } from "@src/entity/treatments/iTreatmentsRepository";
-import { TreatmentsRepository } from "@src/entity/treatments/TreatmentsRepository";
+import { ICreatTreatmentDTO } from "@src/entity/ERs/IERsRepository";
+import { TreatmentsRepository } from "@src/entity/ERs/ERsRepository";
 import { Request, Response } from "express";
 import { v4 as uuidv4} from "uuid";
 
