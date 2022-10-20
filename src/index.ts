@@ -2,13 +2,15 @@ import express from "express";
 import cors from 'cors';
 
 import { usersRoutes } from "@routes/users.routes";
-import { productsRoutes } from "@routes/products.routes";
+import { zonesRoutes } from "@src/routes/zones.routes";
 import { authenticateRoutes } from "@routes/authenticate.routes";
 import { activitiesRoutes } from "@routes/categories.routes";
-import { treatmentsRoutes } from "./routes/treatments.routes";
+import { lubricationSystemServicesRoutes } from "./routes/lubricationSystemService.routes";
 import { ensureAuthenticated } from "./midlewares/ensureAuthenticated";
-import { clientsRoutes } from "./routes/clients.routes";
+import { collaboratorsRoutes } from "./routes/collaborators.routes";
 import { ensureIsAdmin } from "./midlewares/ensureIsAdmin";
+import { LubricationSystemServices } from "./entity/LubricationSystemServices/lubricationSystemServices";
+import { ersRoutes } from "./routes/ers.routes";
 
 const app = express();
 
@@ -26,11 +28,13 @@ app.use("/users", usersRoutes);
 app.use(ensureAuthenticated);
 
 //Midleware para validar a autenticação de todas as rotas seguintes
-app.use("/clients", clientsRoutes);
+app.use("/collaborators", collaboratorsRoutes);
 
-app.use("/products", productsRoutes);
+app.use("/zones", zonesRoutes);
 app.use("/activities", activitiesRoutes);
-app.use("/treatments", treatmentsRoutes);
+app.use("/lubricationSystemServices", lubricationSystemServicesRoutes);
+
+app.use("/ers", ersRoutes);
 
 
 

@@ -1,20 +1,23 @@
-
 import { PostgresDS } from "@src/data-source";
-import { ILubricationSystemServicesRepository, ICreateLubricationSystemServiceDTO } from "./ILubricationSystemServicesRepository";
+import {
+  ILubricationSystemServicesRepository,
+  ICreateLubricationSystemServiceDTO,
+} from "./ILubricationSystemServicesRepository";
 import { LubricationSystemServices } from "./lubricationSystemServices";
 
-class LubricationSystemServicesReposiory implements ILubricationSystemServicesRepository{
-
-  async create(data: ICreateLubricationSystemServiceDTO): Promise<LubricationSystemServices> {
-
+class LubricationSystemServicesRepository
+  implements ILubricationSystemServicesRepository
+{
+  async create(
+    data: ICreateLubricationSystemServiceDTO
+  ): Promise<LubricationSystemServices> {
     const product = new LubricationSystemServices();
 
-    
-    product.activity =        data.activities;
-    product.add =             data.add;
-    product.obs =             data.obs;
-    product.collaborator =   data.collaborators;
-    
+    product.activity = data.activity;
+    product.add = data.add;
+    product.obs = data.obs;
+    product.collaborator = data.collaborator;
+
     await PostgresDS.manager.save(product);
 
     return product;
@@ -22,12 +25,15 @@ class LubricationSystemServicesReposiory implements ILubricationSystemServicesRe
 
   async list(): Promise<LubricationSystemServices[]> {
     //const products = await PostgresDS.manager.find(LubricationSystemServices);
-    const query = PostgresDS.manager.createQueryBuilder<LubricationSystemServices>('LubricationSystemServices', 'p').innerJoinAndSelect('p.category', 'w'); // 'w.userId = u.id' may be omitted
-    
+    const query = PostgresDS.manager
+      .createQueryBuilder<LubricationSystemServices>("LubricationSystemServices", "l")
+      .innerJoinAndSelect("l.collaborator", "c")
+      .innerJoinAndSelect("l.activity", "a"); 
+
     const result = await query.getMany();
 
     return result;
   }
 }
 
-export { LubricationSystemServicesReposiory };
+export { LubricationSystemServicesRepository };

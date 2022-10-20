@@ -1,13 +1,13 @@
 import { MigrationInterface, QueryRunner, Table, TableIndex } from "typeorm"
 
-export class CreateClients1652238152394 implements MigrationInterface {
+export class CreateCollaborators1652238152394 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         
         await queryRunner.createTable(
             new Table(
                 {
-                    name:"Clients",
+                    name:"Collaborators",
                     columns: [
                         {
                             name: "id",
@@ -35,7 +35,7 @@ export class CreateClients1652238152394 implements MigrationInterface {
                             type: "varchar",
                         },                                                            
                         {
-                            name: "created_at",
+                            name: "createdAt",
                             type: "timestamp",
                             default: "now()"
                         }
@@ -44,9 +44,9 @@ export class CreateClients1652238152394 implements MigrationInterface {
         );
 
         await queryRunner.createIndex(
-            "Clients",
+            "Collaborators",
             new TableIndex({
-                name: "IDX_CLIENTS_NAME",
+                name: "IDX_COLLABORATORS_NAME",
                 columnNames: ["name"],
             })
         );
@@ -55,9 +55,9 @@ export class CreateClients1652238152394 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
     
     
-        await queryRunner.dropIndex("Clients", "IDX_CLIENTS_NAME");
+        await queryRunner.dropIndex("Collaborators", "IDX_COLLABORATORS_NAME");
         
-        await queryRunner.dropTable("Clients");
+        await queryRunner.dropTable("Collaborators");
 
     }
 

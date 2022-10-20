@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table, TableIndex, TableOptions } from "typeorm"
 
-export class CreateCategories1653072096254 implements MigrationInterface {
+export class CreateActivities1653072096254 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         
-        const newCategoriesTableOptions:TableOptions = {
-            name:"Categories",
+        const newActivitiesTableOptions:TableOptions = {
+            name:"Activities",
             columns:[
                 {
                     name:"id",
@@ -31,12 +31,12 @@ export class CreateCategories1653072096254 implements MigrationInterface {
         };
 
 
-        await queryRunner.createTable(new Table(newCategoriesTableOptions));
+        await queryRunner.createTable(new Table(newActivitiesTableOptions));
 
         await queryRunner.createIndex(
-            "Categories",
+            "Activities",
             new TableIndex({
-                name: "IDX_CATEGORIES_NAME",
+                name: "IDX_ACTIVITIES_NAME",
                 columnNames: ["name"],
             })
         );
@@ -44,9 +44,9 @@ export class CreateCategories1653072096254 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
 
-        await queryRunner.dropIndex("Categories", "IDX_CATEGORIES_NAME");
+        await queryRunner.dropIndex("Activities", "IDX_ZONES_NAME");
 
-        await queryRunner.dropTable("Categories");
+        await queryRunner.dropTable("Activities");
     }
 
 }

@@ -1,12 +1,14 @@
 import { Activities } from "../Activities/activities";
 import { Collaborators } from "../Collaborators/collaborators";
+import { ERs } from "../ERs/ERs";
 import { LubricationSystemServices } from "./lubricationSystemServices";
 
 interface ICreateLubricationSystemServiceDTO {
-  activities: Activities;
+  activity: Activities;
   add: number;
   obs: string;
-  collaborators: Collaborators;
+  collaborator: Collaborators;
+  er: ERs;
 }
 
 interface ILubricationSystemServicesRepository {

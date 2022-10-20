@@ -14,9 +14,6 @@ export class ERs{
     @Column()
     number: number;
 
-    @Column()
-    zoneId: string
-
     @CreateDateColumn()
     createdAt: Date
     
@@ -24,7 +21,7 @@ export class ERs{
     @ManyToOne(() => Zones, (zone) => zone.ers)
     zone: Zones;
 
-    @OneToMany(() => LubricationSystemServices, (lubricationSystemServices) => lubricationSystemServices.ER)
+    @OneToMany(() => LubricationSystemServices, (lubricationSystemServices) => lubricationSystemServices.er)
     lubricationSystemServices: LubricationSystemServices[];
 
 

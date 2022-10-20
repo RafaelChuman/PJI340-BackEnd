@@ -35,7 +35,7 @@ export class LubricationSystemServices {
   collaborator: Collaborators;
 
   @ManyToOne(() => ERs, (er) => er.lubricationSystemServices)
-  ER: ERs;
+  er: ERs;
 
   constructor() {
     if (!this.id) {

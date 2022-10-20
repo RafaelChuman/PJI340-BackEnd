@@ -1,5 +1,5 @@
 import {
-  ICreatERDTO,
+  ICreateERDTO,
   IDeleteERDTO,
   IERsRepository,
   IListERByZoneId,
@@ -9,7 +9,7 @@ import { PostgresDS } from "@src/data-source";
 import { DeleteResult } from "typeorm";
 
 export class ERsRepository implements IERsRepository {
-  async createER(data: ICreatERDTO): Promise<ERs> {
+  async createER(data: ICreateERDTO): Promise<ERs> {
     const newER = new ERs();
 
     newER.number = data.number;

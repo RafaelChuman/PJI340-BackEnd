@@ -3,7 +3,7 @@ import { LubricationSystemServices } from "../LubricationSystemServices/lubricat
 import { Zones } from "../Zones/zones";
 import { ERs } from "./ERs";
 
-interface ICreatERDTO{
+interface ICreateERDTO{
     number: number;
     zone: Zones;
     lubricationSystemServices: LubricationSystemServices[];
@@ -20,7 +20,7 @@ interface IDeleteERDTO{
 
 interface IERsRepository{
     
-    createER(data: ICreatERDTO): Promise<ERs>;
+    createER(data: ICreateERDTO): Promise<ERs>;
     listER(): Promise<ERs[]|undefined>;
     listERByZoneId(data: IListERByZoneId): Promise<ERs[] | null>;
     deleteERById(data: IDeleteERDTO): Promise<DeleteResult>;
@@ -29,4 +29,4 @@ interface IERsRepository{
     
 };
 
-export {IERsRepository, ICreatERDTO, IListERByZoneId, IDeleteERDTO};
+export {IERsRepository, ICreateERDTO, IListERByZoneId, IDeleteERDTO};
