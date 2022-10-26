@@ -6,7 +6,7 @@ import {
   TableIndex,
 } from "typeorm";
 
-export class CreateLubricationSystemServices1653072096255
+export class CreateLubricationSystemServices1653500000000
   implements MigrationInterface
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -52,13 +52,7 @@ export class CreateLubricationSystemServices1653072096255
 
     await queryRunner.createTable(newLubricationSystemServiceTable);
 
-    await queryRunner.createIndex(
-      "LubricationSystemServices",
-      new TableIndex({
-        name: "IDX_LUBRICATIONSYSTEMSERVICES_NAME",
-        columnNames: ["name"],
-      })
-    );
+
 
     await queryRunner.createForeignKey(
       "LubricationSystemServices",
@@ -105,10 +99,7 @@ export class CreateLubricationSystemServices1653072096255
         "FK_LUBRICATIONSYSTEMSERVICES_ACTIVITIES"
       );
 
-    await queryRunner.dropIndex(
-      "LubricationSystemServices",
-      "IDX_LUBRICATIONSYSTEMSERVICES_NAME"
-    );
+
 
     await queryRunner.dropIndex(
       "LubricationSystemServices",

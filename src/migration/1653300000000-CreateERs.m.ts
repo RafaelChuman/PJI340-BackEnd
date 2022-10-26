@@ -7,7 +7,7 @@ import {
   TableOptions,
 } from "typeorm";
 
-export class CreateERs1653322321419 implements MigrationInterface {
+export class CreateERs1653300000000 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     const newERsTableOptions: TableOptions = {
       name: "ERs",
@@ -49,7 +49,7 @@ export class CreateERs1653322321419 implements MigrationInterface {
       "ERs",
       new TableForeignKey({
         name: "FK_ER_ZONES",
-        columnNames: ["zones"],
+        columnNames: ["zone"],
         referencedColumnNames: ["id"],
         referencedTableName: "Zones",
         onDelete: "CASCADE",

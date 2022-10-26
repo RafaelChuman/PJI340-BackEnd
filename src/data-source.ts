@@ -20,7 +20,7 @@ export const PostgresDS = new DataSource({
     password: "test",
     database: "pji340",
     name: "default",
-    entities: [Users, Collaborators, Activities, Zones, LubricationSystemServices, ERs],
+    entities: [Users, Collaborators, Activities, Zones, ERs, LubricationSystemServices],
     migrations: ["./src/migration/*.m.ts"],
     //ssl:{rejectUnauthorized:false}
     //migrationsRun: false,
