@@ -17,7 +17,7 @@ class ListUserUseCase {
     }
 
     if (groupByMonth) {
-      // if(monthFormatDate <0 || monthFormatDate > 12) throw new AppError("Parâmetros Incorretos", 400)
+      //if(monthFormatDate <0 || monthFormatDate > 12) throw new AppError("Parâmetros Incorretos", 400)
 
       const users = await userRespository.listAllUsersGroupedByMonth();
 
