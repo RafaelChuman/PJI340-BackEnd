@@ -1,15 +1,17 @@
 import { Router } from "express";
 import { ensureAuthenticated } from "@midlewares/ensureAuthenticated";
 import multer from "multer";
-import {uploadFile} from "@config/fileManager";
-import { createZoneUseCase, listZoneUseCase } from "@src/modules/zones";
+import { uploadFile } from "@config/fileManager";
+import {
+  createZoneUseCase,
+  deleteZoneUseCase,
+  listZoneUseCase,
+} from "@src/modules/zones";
 import { ensureIsAdmin } from "@src/midlewares/ensureIsAdmin";
-
 
 const zonesRoutes = Router();
 
-const uploadPhoto = multer(uploadFile("./tmp/Zones"))
-
+const uploadPhoto = multer(uploadFile("./tmp/Zones"));
 
 zonesRoutes.post("/", ensureIsAdmin, (request, response) =>
   createZoneUseCase.execute(request, response)
@@ -17,6 +19,10 @@ zonesRoutes.post("/", ensureIsAdmin, (request, response) =>
 
 zonesRoutes.get("/", (request, response) =>
   listZoneUseCase.execute(request, response)
+);
+
+zonesRoutes.delete("/", (request, response) =>
+  deleteZoneUseCase.execute(request, response)
 );
 
 // zonesRoutes.patch("/", uploadPhoto.single("Zones"), ensureAuthenticated,
