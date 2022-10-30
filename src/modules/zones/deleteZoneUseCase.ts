@@ -8,7 +8,6 @@ class DeleteZoneUseCase {
     
     if (typeof idParam == "string") {
       const data: IDeleteZoneDTO = { id: idParam };
-      console.log(data);
 
       const zoneRepository = new ZonesRepository();
 

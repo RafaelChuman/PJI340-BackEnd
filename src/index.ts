@@ -4,7 +4,7 @@ import cors from 'cors';
 import { usersRoutes } from "@routes/users.routes";
 import { zonesRoutes } from "@src/routes/zones.routes";
 import { authenticateRoutes } from "@routes/authenticate.routes";
-import { activitiesRoutes } from "@routes/categories.routes";
+import { activitiesRoutes } from "@src/routes/activities.routes";
 import { lubricationSystemServicesRoutes } from "./routes/lubricationSystemService.routes";
 import { ensureAuthenticated } from "./midlewares/ensureAuthenticated";
 import { collaboratorsRoutes } from "./routes/collaborators.routes";

@@ -1,6 +1,6 @@
 import { ensureAuthenticated } from "@src/midlewares/ensureAuthenticated";
 import { ensureIsAdmin } from "@src/midlewares/ensureIsAdmin";
-import { createCollaboratorUseCase, listCollaboratorUseCase } from "@src/modules/collaborators";
+import { createCollaboratorUseCase, deleteCollaboratorUseCase, listCollaboratorUseCase } from "@src/modules/collaborators";
 import { response, request, Router } from "express";
 
 const collaboratorsRoutes = Router();
@@ -11,6 +11,10 @@ collaboratorsRoutes.post("/", (request, response) => {
 
 collaboratorsRoutes.get("/", (request, response) => {
   listCollaboratorUseCase.execute(request, response);
+});
+
+collaboratorsRoutes.delete("/", (request, response) => {
+  deleteCollaboratorUseCase.execute(request, response);
 });
 
 export { collaboratorsRoutes };

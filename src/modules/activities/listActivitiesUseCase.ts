@@ -1,7 +1,7 @@
 import { ActivitiesRepository } from "@src/entity/Activities/activitiesRepository";
 import { Response, Request } from "express";
 
-class ListActivities {
+class ListActivitiesUseCase {
     async handle(request: Request, response: Response): Promise<Response>{
 
         const categoriesRepository = new ActivitiesRepository();
@@ -12,4 +12,4 @@ class ListActivities {
     }
 }
 
-export {ListActivities}
+export {ListActivitiesUseCase}

@@ -3,7 +3,7 @@ import { ActivitiesRepository } from "@src/entity/Activities/activitiesRepositor
 import { ICreateActivityDTO } from "@src/entity/Activities/IActivitiesRepository";
 import {Request, Response} from "express";
 
-class CreateActivity{
+class CreateActivityUseCase{
 
     async handle(request: Request, response: Response): Promise<Response> {
 
@@ -20,4 +20,4 @@ class CreateActivity{
 
 }
 
-export {CreateActivity}
+export {CreateActivityUseCase}

@@ -21,7 +21,7 @@ class ActivitiesRepository implements IActivitiesRepository{
         return newActivity;
     }
 
-    async deleteActivity(activitie: IDeleteActivityDTO): Promise<DeleteResult> {
+    async deleteActivityById(activitie: IDeleteActivityDTO): Promise<DeleteResult> {
         
         return await PostgresDS.manager.delete(
             Activities, {

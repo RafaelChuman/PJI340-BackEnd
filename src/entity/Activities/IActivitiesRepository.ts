@@ -16,7 +16,7 @@ interface IUpdateActivityDTO{
 
 interface IActivitiesRepository{
     createActivity( activity:ICreateActivityDTO ): Promise<Activities>;
-    deleteActivity( activity:IDeleteActivityDTO ): Promise<DeleteResult>;
+    deleteActivityById( activity:IDeleteActivityDTO ): Promise<DeleteResult>;
     updateActivity( activity:IUpdateActivityDTO ): Promise<Activities | null>;
     listActivities():Promise<Activities[]>;
     

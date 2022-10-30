@@ -18,7 +18,7 @@ class CreateCollaboratorUseCase {
     const collaboratorNameAlredyExist = await collaboratorsRepository.findByCollaboratorName(data.name);
 
     if (collaboratorNameAlredyExist) {
-      throw new AppError("Collaborator Already Exists.");
+      return response.status(200).json("Collaborator Already Exists.");
     }
 
     const resp = await collaboratorsRepository.create(data);

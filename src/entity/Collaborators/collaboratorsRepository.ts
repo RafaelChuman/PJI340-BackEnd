@@ -1,6 +1,7 @@
 import { PostgresDS } from "@src/data-source";
-import { ICreateCollaboratorDTO, ICollaboratorsRepository } from "./ICollaboratorsRepository";
+import { ICreateCollaboratorDTO, ICollaboratorsRepository, IDeleteCollaboratorDTO } from "./ICollaboratorsRepository";
 import { Collaborators } from "./collaborators";
+import { DeleteResult } from "typeorm";
 
 class CollaboratorsRepository implements ICollaboratorsRepository {
   async create(data: ICreateCollaboratorDTO): Promise<Collaborators> {
@@ -52,6 +53,16 @@ class CollaboratorsRepository implements ICollaboratorsRepository {
   async findById(idParm: string): Promise<Collaborators | null> {
     const collaborator = await PostgresDS.manager.findOneBy(Collaborators, {
       id: idParm,
+    });
+
+    return collaborator;
+  }
+
+
+  
+  async deleteById(data: IDeleteCollaboratorDTO): Promise<DeleteResult> {
+    const collaborator = await PostgresDS.manager.delete(Collaborators, {
+      id: data.id,
     });
 
     return collaborator;
