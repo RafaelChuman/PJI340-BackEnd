@@ -5,11 +5,11 @@ import { usersRoutes } from "@routes/users.routes";
 import { zonesRoutes } from "@src/routes/zones.routes";
 import { authenticateRoutes } from "@routes/authenticate.routes";
 import { activitiesRoutes } from "@src/routes/activities.routes";
-import { lubricationSystemServicesRoutes } from "./routes/lubricationSystemService.routes";
+import { lubrificationSystemServicesRoutes } from "./routes/lubricationSystemService.routes";
 import { ensureAuthenticated } from "./midlewares/ensureAuthenticated";
 import { collaboratorsRoutes } from "./routes/collaborators.routes";
 import { ensureIsAdmin } from "./midlewares/ensureIsAdmin";
-import { LubricationSystemServices } from "./entity/LubricationSystemServices/lubricationSystemServices";
+import { LubricationSystemServices } from "./entity/LubricationSystemServices/lubrificationSystemServices";
 import { ersRoutes } from "./routes/ers.routes";
 
 const app = express();
@@ -32,7 +32,7 @@ app.use("/collaborators", collaboratorsRoutes);
 
 app.use("/zones", zonesRoutes);
 app.use("/activities", activitiesRoutes);
-app.use("/lubricationSystemServices", lubricationSystemServicesRoutes);
+app.use("/lubrificationSystems", lubrificationSystemServicesRoutes);
 
 app.use("/ers", ersRoutes);
 

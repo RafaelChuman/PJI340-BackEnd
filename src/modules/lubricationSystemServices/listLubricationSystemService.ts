@@ -1,4 +1,4 @@
-import { LubricationSystemServicesRepository } from "@src/entity/LubricationSystemServices/lubricationSystemServicesRepository";
+import { LubricationSystemServicesRepository } from "@src/entity/LubricationSystemServices/lubrificationSystemServicesRepository";
 import { Request, Response } from "express";
 
 export class ListLubricationSystemServices {

@@ -12,7 +12,7 @@ import { ERs } from "@src/entity/ERs/ERs";
 import { Collaborators } from "../Collaborators/collaborators";
 
 @Entity("LubricationSystemServices")
-export class LubricationSystemServices {
+export class LubrificationSystemServices {
   @PrimaryColumn()
   id: string;
 
@@ -25,7 +25,7 @@ export class LubricationSystemServices {
   @Column()
   obs: string;
 
-  @ManyToOne(() => Activities, (activity) => activity.lubricationSystemServices)
+  @ManyToOne(() => Activities, (activity) => activity.lubrificationSystemServices)
   activity: Activities;
 
   @ManyToOne(
@@ -34,7 +34,7 @@ export class LubricationSystemServices {
   )
   collaborator: Collaborators;
 
-  @ManyToOne(() => ERs, (er) => er.lubricationSystemServices)
+  @ManyToOne(() => ERs, (er) => er.lubrificationSystemServices)
   er: ERs;
 
   constructor() {

@@ -1,5 +1,5 @@
 import { DeleteResult } from "typeorm";
-import { LubricationSystemServices } from "../LubricationSystemServices/lubricationSystemServices";
+import { LubricationSystemServices } from "../LubricationSystemServices/lubrificationSystemServices";
 import { Zones } from "../Zones/zones";
 import { ERs } from "./ERs";
 

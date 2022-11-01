@@ -1,5 +1,5 @@
-import { ICreateLubricationSystemServiceDTO } from "@src/entity/LubricationSystemServices/ILubricationSystemServicesRepository";
-import { LubricationSystemServicesRepository } from "@src/entity/LubricationSystemServices/lubricationSystemServicesRepository";
+import { ICreateLubricationSystemServiceDTO } from "@src/entity/LubricationSystemServices/ILubrificationSystemServicesRepository";
+import { LubricationSystemServicesRepository } from "@src/entity/LubricationSystemServices/lubrificationSystemServicesRepository";
 import { Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
 

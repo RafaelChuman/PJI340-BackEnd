@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import {v4 as uuidv4} from "uuid";
 import { Collaborators } from "@src/entity/Collaborators/collaborators";
-import { LubricationSystemServices } from "@src/entity/LubricationSystemServices/lubricationSystemServices";
+import { LubrificationSystemServices } from "@src/entity/LubricationSystemServices/lubrificationSystemServices";
 import { Zones } from "../Zones/zones";
 
 
@@ -21,8 +21,8 @@ export class ERs{
     @ManyToOne(() => Zones, (zone) => zone.ers)
     zone: Zones;
 
-    @OneToMany(() => LubricationSystemServices, (lubricationSystemServices) => lubricationSystemServices.er)
-    lubricationSystemServices: LubricationSystemServices[];
+    @OneToMany(() => LubrificationSystemServices, (lubricationSystemServices) => lubricationSystemServices.er)
+    lubrificationSystemServices: LubrificationSystemServices[];
 
 
 

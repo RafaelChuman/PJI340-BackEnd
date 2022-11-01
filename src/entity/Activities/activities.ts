@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
-import { LubricationSystemServices } from "../LubricationSystemServices/lubricationSystemServices";
+import { LubrificationSystemServices } from "../LubricationSystemServices/lubrificationSystemServices";
 
 @Entity("Activities")
 export class Activities
@@ -15,8 +15,8 @@ export class Activities
     @CreateDateColumn()
     createdAt: Date
 
-    @OneToMany(()=> LubricationSystemServices, (lubricationSystemServices) => lubricationSystemServices.activity)
-    lubricationSystemServices: LubricationSystemServices[]
+    @OneToMany(()=> LubrificationSystemServices, (lubrificationSystemServices) => lubrificationSystemServices.activity)
+    lubrificationSystemServices: LubrificationSystemServices[]
 
     constructor()
     {

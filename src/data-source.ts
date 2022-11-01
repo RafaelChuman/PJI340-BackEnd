@@ -3,7 +3,7 @@ import { DataSource } from "typeorm";
 import { Activities } from "@src/entity/Activities/activities";
 import { Collaborators } from "./entity/Collaborators/collaborators";
 import { Zones } from "./entity/Zones/zones";
-import { LubricationSystemServices } from "./entity/LubricationSystemServices/lubricationSystemServices";
+import { LubrificationSystemServices } from "./entity/LubricationSystemServices/lubrificationSystemServices";
 import { ERs } from "./entity/ERs/ERs";
 
 export const PostgresDS = new DataSource({
@@ -20,7 +20,7 @@ export const PostgresDS = new DataSource({
     password: "test",
     database: "pji340",
     name: "default",
-    entities: [Users, Collaborators, Activities, Zones, ERs, LubricationSystemServices],
+    entities: [Users, Collaborators, Activities, Zones, ERs, LubrificationSystemServices],
     migrations: ["./src/migration/*.m.ts"],
     //ssl:{rejectUnauthorized:false}
     //migrationsRun: false,

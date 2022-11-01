@@ -3,14 +3,14 @@ import { createLubricationSystemService, listLubricationSystemServices } from "@
 import { request, Request, Response, Router } from "express";
 
 
-const lubricationSystemServicesRoutes = Router();
+const lubrificationSystemServicesRoutes = Router();
 
-lubricationSystemServicesRoutes.post("/", ensureIsAdmin, (request, response) => 
+lubrificationSystemServicesRoutes.post("/", ensureIsAdmin, (request, response) => 
     createLubricationSystemService.execute(request, response)
 );
 
-lubricationSystemServicesRoutes.get("/", (request, response) => 
+lubrificationSystemServicesRoutes.get("/", (request, response) => 
     listLubricationSystemServices.execute(request, response)
 );
 
-export {lubricationSystemServicesRoutes};
+export {lubrificationSystemServicesRoutes};

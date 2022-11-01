@@ -1,7 +1,7 @@
 import { Activities } from "../Activities/activities";
 import { Collaborators } from "../Collaborators/collaborators";
 import { ERs } from "../ERs/ERs";
-import { LubricationSystemServices } from "./lubricationSystemServices";
+import { LubrificationSystemServices } from "./lubrificationSystemServices";
 
 interface ICreateLubricationSystemServiceDTO {
   activity: Activities;
@@ -14,11 +14,11 @@ interface ICreateLubricationSystemServiceDTO {
 interface ILubricationSystemServicesRepository {
   create(
     data: ICreateLubricationSystemServiceDTO
-  ): Promise<LubricationSystemServices>;
+  ): Promise<LubrificationSystemServices>;
   // findById(id: string): User | undefined;
   // findByEmail(email: string): User | undefined;
   // turnAdmin(user: User): User;
-  list(): Promise<LubricationSystemServices[]>;
+  list(): Promise<LubrificationSystemServices[]>;
 }
 
 export {

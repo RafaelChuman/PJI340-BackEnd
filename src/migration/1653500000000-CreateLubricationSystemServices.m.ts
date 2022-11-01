@@ -32,15 +32,15 @@ export class CreateLubricationSystemServices1653500000000
           type: "varchar",
         },
         {
-          name: "activity",
+          name: "activityId",
           type: "uuid",
         },
         {
-          name: "collaborator",
+          name: "collaboratorId",
           type: "uuid",
         },
         {
-          name: "er",
+          name: "erId",
           type: "uuid",
         },
       ],
@@ -58,7 +58,7 @@ export class CreateLubricationSystemServices1653500000000
       "LubricationSystemServices",
       new TableForeignKey({
         name: "FK_LUBRICATIONSYSTEMSERVICES_COLLABORATORS",
-        columnNames: ["collaborator"],
+        columnNames: ["collaboratorId"],
         referencedColumnNames: ["id"],
         referencedTableName: "Collaborators",
         onDelete: "CASCADE",
@@ -69,7 +69,7 @@ export class CreateLubricationSystemServices1653500000000
         "LubricationSystemServices",
         new TableForeignKey({
           name: "FK_LUBRICATIONSYSTEMSERVICES_ACTIVITIES",
-          columnNames: ["activity"],
+          columnNames: ["activityId"],
           referencedColumnNames: ["id"],
           referencedTableName: "Activities",
           onDelete: "CASCADE",
@@ -80,7 +80,7 @@ export class CreateLubricationSystemServices1653500000000
         "LubricationSystemServices",
         new TableForeignKey({
           name: "FK_LUBRICATIONSYSTEMSERVICES_ERS",
-          columnNames: ["er"],
+          columnNames: ["erId"],
           referencedColumnNames: ["id"],
           referencedTableName: "ERs",
           onDelete: "CASCADE",

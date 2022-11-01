@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
-import { LubricationSystemServices } from "../LubricationSystemServices/lubricationSystemServices";
+import { LubricationSystemServices } from "../LubricationSystemServices/lubrificationSystemServices";
 import { ERs } from "../ERs/ERs";
 
 @Entity("Zones")
