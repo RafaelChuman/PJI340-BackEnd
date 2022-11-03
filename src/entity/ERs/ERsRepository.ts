@@ -7,13 +7,21 @@ import {
 import { ERs } from "./ERs";
 import { PostgresDS } from "@src/data-source";
 import { DeleteResult } from "typeorm";
+import { Zones } from "../Zones/zones";
+import { ZonesRepository } from "../Zones/ZonesRepository";
 
 export class ERsRepository implements IERsRepository {
-  async createER(data: ICreateERDTO): Promise<ERs> {
+  async createER(data: ICreateERDTO): Promise<ERs | null> {
     const newER = new ERs();
+    const zoneRepository = new ZonesRepository();
+
+    const zone = await zoneRepository.findZonesById(data.zone);
+
+    if(zone == null)
+      return null;
 
     newER.number = data.number;
-    newER.zone = data.zone;
+    newER.zone = zone;
 
     await PostgresDS.manager.save(newER);
 
@@ -21,9 +29,7 @@ export class ERsRepository implements IERsRepository {
   }
 
   async listERByZoneId(data: IListERByZoneId): Promise<ERs[] | null>{
-    const er = await PostgresDS.manager.findBy(ERs, {
-      zoneId: data.zoneId,
-    });
+    const er = await PostgresDS.manager.find(ERs);
 
     return er;
   }
@@ -58,13 +64,23 @@ export class ERsRepository implements IERsRepository {
 
   async listER(): Promise<ERs[] | undefined> {
     //const ers = await PostgresDS.manager.find(ERs);
-    const query = PostgresDS.manager
-      .createQueryBuilder<ERs>("ERs", "t")
-      .innerJoinAndSelect("t.products", "p")
-      .innerJoinAndSelect("t.clients", "c"); // 'w.userId = u.id' may be omitted
-    const ers = await query.getMany();
+    // const query = PostgresDS.manager
+    //   .createQueryBuilder<ERs>("ERs", "t")
+    //   .innerJoinAndSelect("t.products", "p")
+    //   .innerJoinAndSelect("t.clients", "c"); // 'w.userId = u.id' may be omitted
+    // const ers = await query.getMany();
 
-    return ers;
+    // return ers;
+    const ers =
+    PostgresDS.manager.getRepository(ERs);
+
+   const result = await ers.find({
+     relations: {
+       zone: true,
+     },
+    });
+
+    return result;
   }
 
   async deleteERById(data: IDeleteERDTO): Promise<DeleteResult> {

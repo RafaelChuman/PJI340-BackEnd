@@ -1,6 +1,5 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import {v4 as uuidv4} from "uuid";
-import { Collaborators } from "@src/entity/Collaborators/collaborators";
 import { LubrificationSystemServices } from "@src/entity/LubricationSystemServices/lubrificationSystemServices";
 import { Zones } from "../Zones/zones";
 

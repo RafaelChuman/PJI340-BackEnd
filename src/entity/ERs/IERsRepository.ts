@@ -1,12 +1,10 @@
 import { DeleteResult } from "typeorm";
-import { LubricationSystemServices } from "../LubricationSystemServices/lubrificationSystemServices";
 import { Zones } from "../Zones/zones";
 import { ERs } from "./ERs";
 
 interface ICreateERDTO{
     number: number;
-    zone: Zones;
-    lubricationSystemServices: LubricationSystemServices[];
+    zone: string;
 };
 
 interface IListERByZoneId{
@@ -20,7 +18,7 @@ interface IDeleteERDTO{
 
 interface IERsRepository{
     
-    createER(data: ICreateERDTO): Promise<ERs>;
+    createER(data: ICreateERDTO): Promise<ERs | null>;
     listER(): Promise<ERs[]|undefined>;
     listERByZoneId(data: IListERByZoneId): Promise<ERs[] | null>;
     deleteERById(data: IDeleteERDTO): Promise<DeleteResult>;

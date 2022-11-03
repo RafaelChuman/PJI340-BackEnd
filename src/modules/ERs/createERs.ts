@@ -6,10 +6,16 @@ import { ERsRepository } from "@src/entity/ERs/ERsRepository";
 export class CreateER {
   async execute(request: Request, response: Response): Promise<Response> {
     const erRespository = new ERsRepository();
-    const datas: ICreateERDTO = request.body.ers;
+    const datas: ICreateERDTO = request.body;
 
-    await erRespository.createER(datas);
 
-    return response.status(200).json("");
+    const data: ICreateERDTO = {
+      number:   request.body.number,
+      zone: request.body.zone
+    };
+
+    const resp = await erRespository.createER(datas);
+
+    return response.status(200).json(resp);
   }
 }

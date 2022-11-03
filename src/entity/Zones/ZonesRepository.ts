@@ -11,6 +11,14 @@ class ZonesRepository implements IZonesRepository{
         return zones;
     }
 
+    async findZonesById(id: string): Promise<Zones | null> {
+        const zone = await PostgresDS.manager.findOneBy(Zones ,{
+            id: id
+        });
+        
+        return zone;
+    }
+
     async createZone(zone: ICreateZoneDTO): Promise<Zones> {
     
         const newZone = new Zones();

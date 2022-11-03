@@ -18,6 +18,7 @@ interface IZonesRepository{
     deleteZone( zone:IDeleteZoneDTO ): Promise<DeleteResult>;
     updateZone( zone:IUpdateZoneDTO ): Promise<Zones | null>;
     listZones():Promise<Zones[]>;
+    findZonesById(id: string): Promise<Zones | null>;
     
 }
 

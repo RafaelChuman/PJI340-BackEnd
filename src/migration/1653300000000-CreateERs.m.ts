@@ -28,7 +28,7 @@ export class CreateERs1653300000000 implements MigrationInterface {
           default: "now()",
         },
         {
-          name: "zone",
+          name: "zoneId",
           type: "uuid",
           isNullable: false,
         },
@@ -49,7 +49,7 @@ export class CreateERs1653300000000 implements MigrationInterface {
       "ERs",
       new TableForeignKey({
         name: "FK_ER_ZONES",
-        columnNames: ["zone"],
+        columnNames: ["zoneId"],
         referencedColumnNames: ["id"],
         referencedTableName: "Zones",
         onDelete: "CASCADE",
