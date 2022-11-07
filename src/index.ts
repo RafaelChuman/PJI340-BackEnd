@@ -8,8 +8,6 @@ import { activitiesRoutes } from "@src/routes/activities.routes";
 import { lubrificationSystemServicesRoutes } from "./routes/lubricationSystemService.routes";
 import { ensureAuthenticated } from "./midlewares/ensureAuthenticated";
 import { collaboratorsRoutes } from "./routes/collaborators.routes";
-import { ensureIsAdmin } from "./midlewares/ensureIsAdmin";
-import { LubricationSystemServices } from "./entity/LubricationSystemServices/lubrificationSystemServices";
 import { ersRoutes } from "./routes/ers.routes";
 
 const app = express();

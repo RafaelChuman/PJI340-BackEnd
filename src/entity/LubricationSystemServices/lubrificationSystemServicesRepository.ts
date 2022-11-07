@@ -1,7 +1,9 @@
 import { PostgresDS } from "@src/data-source";
+import { DeleteQueryBuilder, DeleteResult } from "typeorm";
 import {
   ILubricationSystemServicesRepository,
   ICreateLubricationSystemServiceDTO,
+  IDeleteLubricationSystemServiceDTO,
 } from "./ILubrificationSystemServicesRepository";
 import { LubrificationSystemServices } from "./lubrificationSystemServices";
 
@@ -17,6 +19,7 @@ class LubricationSystemServicesRepository
     product.add = data.add;
     product.obs = data.obs;
     product.collaborator = data.collaborator;
+    product.er = data.er;
 
     await PostgresDS.manager.save(product);
 
@@ -32,8 +35,8 @@ class LubricationSystemServicesRepository
 
     const result = await LubricationSystemServicesRepository.find({
       relations: {
-        activity: false,
-        collaborator: false,
+        activity: true,
+        collaborator: true,
       },
     });
     // const query = PostgresDS.manager
@@ -44,6 +47,18 @@ class LubricationSystemServicesRepository
     //const result = await query.getMany();
 
     return result;
+  }
+  async deleteById(data: IDeleteLubricationSystemServiceDTO): Promise<DeleteResult> {
+    const LubricationSystemServicesRepository =
+     PostgresDS.manager.getRepository(LubrificationSystemServices);
+
+     console.log(data.id);
+     const result = await LubricationSystemServicesRepository.delete({
+      id: data.id
+     });
+     console.log(result);
+
+     return result;
   }
 }
 

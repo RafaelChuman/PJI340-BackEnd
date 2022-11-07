@@ -8,9 +8,9 @@ export class CreateLubricationSystemService {
     const lubricationSystemServiceRespository =
       new LubricationSystemServicesRepository();
     const datas: ICreateLubricationSystemServiceDTO =
-      request.body.lubricationSystemServices;
+      request.body.lubrificationSystems;
 
-    await lubricationSystemServiceRespository.create(datas);
+      await lubricationSystemServiceRespository.create(datas);
 
     return response.status(200).json("");
   }

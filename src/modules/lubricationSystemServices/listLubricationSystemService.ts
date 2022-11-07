@@ -12,9 +12,6 @@ export class ListLubricationSystemServices {
       const lubricationSystemServices =
         await lubricationSystemServicesRespository.list();
 
-
-
-
     return response.status(200).json(lubricationSystemServices);
   }
 }

@@ -1,5 +1,5 @@
 import { ensureIsAdmin } from "@src/midlewares/ensureIsAdmin";
-import { createLubricationSystemService, listLubricationSystemServices } from "@src/modules/lubricationSystemServices";
+import { createLubricationSystemService, deleteLubricationSystemService, listLubricationSystemServices } from "@src/modules/lubricationSystemServices";
 import { request, Request, Response, Router } from "express";
 
 
@@ -11,6 +11,10 @@ lubrificationSystemServicesRoutes.post("/", ensureIsAdmin, (request, response) =
 
 lubrificationSystemServicesRoutes.get("/", (request, response) => 
     listLubricationSystemServices.execute(request, response)
+);
+
+lubrificationSystemServicesRoutes.delete("/", (request, response) => 
+    deleteLubricationSystemService.execute(request, response)
 );
 
 export {lubrificationSystemServicesRoutes};

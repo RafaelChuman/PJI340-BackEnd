@@ -1,3 +1,4 @@
+import { DeleteQueryBuilder, DeleteResult } from "typeorm";
 import { Activities } from "../Activities/activities";
 import { Collaborators } from "../Collaborators/collaborators";
 import { ERs } from "../ERs/ERs";
@@ -11,6 +12,10 @@ interface ICreateLubricationSystemServiceDTO {
   er: ERs;
 }
 
+interface IDeleteLubricationSystemServiceDTO {
+  id: string;
+}
+
 interface ILubricationSystemServicesRepository {
   create(
     data: ICreateLubricationSystemServiceDTO
@@ -18,10 +23,12 @@ interface ILubricationSystemServicesRepository {
   // findById(id: string): User | undefined;
   // findByEmail(email: string): User | undefined;
   // turnAdmin(user: User): User;
+  deleteById(data: IDeleteLubricationSystemServiceDTO): Promise<DeleteResult>;
   list(): Promise<LubrificationSystemServices[]>;
 }
 
 export {
   ILubricationSystemServicesRepository,
   ICreateLubricationSystemServiceDTO,
+  IDeleteLubricationSystemServiceDTO,
 };
