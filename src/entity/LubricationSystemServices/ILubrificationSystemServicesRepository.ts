@@ -24,7 +24,7 @@ interface ILubricationSystemServicesRepository {
   // findByEmail(email: string): User | undefined;
   // turnAdmin(user: User): User;
   deleteById(data: IDeleteLubricationSystemServiceDTO): Promise<DeleteResult>;
-  list(): Promise<LubrificationSystemServices[]>;
+  list(ERId:string): Promise<LubrificationSystemServices[]>;
 }
 
 export {

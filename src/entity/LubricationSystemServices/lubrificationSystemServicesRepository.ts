@@ -26,17 +26,23 @@ class LubricationSystemServicesRepository
     return product;
   }
 
-  async list(): Promise<LubrificationSystemServices[]> {
+  async list(ERId: string): Promise<LubrificationSystemServices[]> {
     //const products = await PostgresDS.manager.find(LubricationSystemServices);
     //const result = await PostgresDS.manager.find(LubricationSystemServices);
 
     const LubricationSystemServicesRepository =
-     PostgresDS.manager.getRepository(LubrificationSystemServices);
+      PostgresDS.manager.getRepository(LubrificationSystemServices);
 
     const result = await LubricationSystemServicesRepository.find({
       relations: {
         activity: true,
         collaborator: true,
+        er: true,
+      },
+      where: {
+        er: {
+          id: ERId,
+        },
       },
     });
     // const query = PostgresDS.manager
@@ -48,17 +54,19 @@ class LubricationSystemServicesRepository
 
     return result;
   }
-  async deleteById(data: IDeleteLubricationSystemServiceDTO): Promise<DeleteResult> {
+  async deleteById(
+    data: IDeleteLubricationSystemServiceDTO
+  ): Promise<DeleteResult> {
     const LubricationSystemServicesRepository =
-     PostgresDS.manager.getRepository(LubrificationSystemServices);
+      PostgresDS.manager.getRepository(LubrificationSystemServices);
 
-     console.log(data.id);
-     const result = await LubricationSystemServicesRepository.delete({
-      id: data.id
-     });
-     console.log(result);
+    console.log(data.id);
+    const result = await LubricationSystemServicesRepository.delete({
+      id: data.id,
+    });
+    console.log(result);
 
-     return result;
+    return result;
   }
 }
 

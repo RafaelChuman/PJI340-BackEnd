@@ -3,15 +3,19 @@ import { Request, Response } from "express";
 
 export class ListLubricationSystemServices {
   async execute(request: Request, response: Response): Promise<Response> {
-    const groupByMonth = request.query?.groupByMonth;
-    const dateOfNewTreatment = request.query?.dateOfNewTreatment;
+    const temp = request.query.id;
 
-    const lubricationSystemServicesRespository = new LubricationSystemServicesRepository();
+    if (typeof temp == "string") {
+      const ERId = temp;
 
-   
+      const lubricationSystemServicesRespository =
+        new LubricationSystemServicesRepository();
+
       const lubricationSystemServices =
-        await lubricationSystemServicesRespository.list();
+        await lubricationSystemServicesRespository.list(ERId);
 
-    return response.status(200).json(lubricationSystemServices);
+      return response.status(200).json(lubricationSystemServices);
+    }
+    return response.status(200).json();
   }
 }
