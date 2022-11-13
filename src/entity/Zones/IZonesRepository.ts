@@ -5,7 +5,7 @@ interface ICreateZoneDTO{
     name:string;    
 }
 interface IDeleteZoneDTO{
-    id:string | undefined;
+    ids:string[];
 }
 
 interface IUpdateZoneDTO{

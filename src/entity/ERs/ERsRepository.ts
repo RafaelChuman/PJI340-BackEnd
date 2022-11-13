@@ -6,8 +6,7 @@ import {
 } from "./IERsRepository";
 import { ERs } from "./ERs";
 import { PostgresDS } from "@src/data-source";
-import { DeleteResult } from "typeorm";
-import { Zones } from "../Zones/zones";
+import { DeleteResult, In } from "typeorm";
 import { ZonesRepository } from "../Zones/ZonesRepository";
 
 export class ERsRepository implements IERsRepository {
@@ -85,7 +84,7 @@ export class ERsRepository implements IERsRepository {
 
   async deleteERById(data: IDeleteERDTO): Promise<DeleteResult> {
     const deletedER = await PostgresDS.manager.delete(ERs, {
-      id: data.id,
+      id: In(data.ids),
     });
 
     return deletedER;

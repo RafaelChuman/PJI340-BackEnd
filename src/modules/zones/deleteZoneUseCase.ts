@@ -4,19 +4,21 @@ import { Response, Request, response } from "express";
 
 class DeleteZoneUseCase {
   async execute(request: Request, response: Response): Promise<Response> {
-    const idParam = request.query.id;
-    
-    if (typeof idParam == "string") {
-      const data: IDeleteZoneDTO = { id: idParam };
+    const idParam : string[] = request.body.ids;
+
+    if (idParam.length > 0) {
+      
+      const data: IDeleteZoneDTO = { ids: idParam };
 
       const zoneRepository = new ZonesRepository();
 
       const resp = await zoneRepository.deleteZone(data);
 
+
       return response.status(200).json(resp);
     }
 
-    return response.status(200);
+    return response.status(200).json("Database not modified.");
   }
 }
 

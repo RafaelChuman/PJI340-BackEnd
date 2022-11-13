@@ -1,5 +1,5 @@
 import { PostgresDS } from "@src/data-source";
-import { DeleteResult } from "typeorm";
+import { DeleteResult, In } from "typeorm";
 import { Activities } from "./activities";
 import { IActivitiesRepository, ICreateActivityDTO, IDeleteActivityDTO, IUpdateActivityDTO } from "./IActivitiesRepository";
 
@@ -25,7 +25,7 @@ class ActivitiesRepository implements IActivitiesRepository{
         
         return await PostgresDS.manager.delete(
             Activities, {
-                id: activitie.id
+                id: In(activitie.ids)
             });
     }
 

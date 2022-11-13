@@ -6,11 +6,11 @@ import { CollaboratorsRepository } from "@src/entity/Collaborators/collaborators
 
 class DeleteCollaboratorUseCase {
   async execute(request: Request, response: Response): Promise<Response> {
-    const idParam = request.query.id;
+    const idParam: string[] = request.body.ids;
 
-    if (typeof idParam == "string") {
+    if (idParam.length > 0) {
       const data: IDeleteCollaboratorDTO = {
-        id: idParam,
+        ids: idParam,
       };
       
       const collaboratorsRepository = new CollaboratorsRepository();
@@ -20,7 +20,7 @@ class DeleteCollaboratorUseCase {
       return response.status(200).json(resp);
     }
 
-    return response.status(200);
+    return response.status(200).json("Database not modified.");;
   }
 }
 

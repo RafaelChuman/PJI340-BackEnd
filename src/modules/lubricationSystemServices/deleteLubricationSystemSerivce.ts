@@ -8,19 +8,19 @@ export class DeleteLubricationSystemService {
     const lubricationSystemServiceRespository =
       new LubricationSystemServicesRepository();
 
-    const idParam = request.query.id;
+    const idParam: string[] = request.body.ids;
 
-    if (typeof idParam == "string") {
+    if (idParam.length > 0) {
       const data: IDeleteLubricationSystemServiceDTO = {
-        id: idParam,
+        ids: idParam,
       };
 
-    console.log(data)
+      console.log(data);
 
-    const resp = await lubricationSystemServiceRespository.deleteById(data);
+      const resp = await lubricationSystemServiceRespository.deleteById(data);
 
-    return response.status(200).json(resp);
+      return response.status(200).json(resp);
     }
-    return response.status(200);
+    return response.status(200).json("Database not modified.");
   }
 }

@@ -1,6 +1,6 @@
 import { PostgresDS } from "@src/data-source";
 import { AppError } from "@src/errors/AppError";
-import { DeleteResult } from "typeorm";
+import { DeleteResult, In } from "typeorm";
 import { Zones } from "./zones";
 import { IZonesRepository, ICreateZoneDTO, IDeleteZoneDTO, IUpdateZoneDTO } from "./IZonesRepository";
 
@@ -34,7 +34,7 @@ class ZonesRepository implements IZonesRepository{
         
         return await PostgresDS.manager.delete(
             Zones, {
-                id: zone.id
+                id: In(zone.ids) 
             });
     }
 

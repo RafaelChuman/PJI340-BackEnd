@@ -1,5 +1,5 @@
 import { PostgresDS } from "@src/data-source";
-import { DeleteQueryBuilder, DeleteResult, MoreThanOrEqual } from "typeorm";
+import { DeleteQueryBuilder, DeleteResult, In, MoreThanOrEqual } from "typeorm";
 import {
   ILubricationSystemServicesRepository,
   ICreateLubricationSystemServiceDTO,
@@ -26,7 +26,6 @@ class LubricationSystemServicesRepository
     return product;
   }
 
-  
   async listAddByMonth(date: Date): Promise<LubrificationSystemServices[]> {
     const query = PostgresDS.manager
       .createQueryBuilder(
@@ -39,8 +38,6 @@ class LubricationSystemServicesRepository
       .groupBy(`1`);
 
     const lubrificationSystemServices = await query.execute();
-
-    console.log(lubrificationSystemServices);
 
     return lubrificationSystemServices;
   }
@@ -87,9 +84,8 @@ class LubricationSystemServicesRepository
     const LubricationSystemServicesRepository =
       PostgresDS.manager.getRepository(LubrificationSystemServices);
 
-    console.log(data.id);
     const result = await LubricationSystemServicesRepository.delete({
-      id: data.id,
+      id: In(data.ids),
     });
     console.log(result);
 

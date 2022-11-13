@@ -10,7 +10,7 @@ interface ICreateCollaboratorDTO {
 }
 
 interface IDeleteCollaboratorDTO {
-  id: string;
+  ids: string[];
 }
 
 

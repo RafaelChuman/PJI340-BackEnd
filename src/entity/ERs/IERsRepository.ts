@@ -12,8 +12,7 @@ interface IListERByZoneId{
 }
 
 interface IDeleteERDTO{
-    id: string;
-    productId?: string;
+    ids: string[];
 };
 
 interface IERsRepository{

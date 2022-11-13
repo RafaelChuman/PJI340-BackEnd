@@ -6,7 +6,7 @@ interface ICreateActivityDTO{
     
 }
 interface IDeleteActivityDTO{
-    id:string;
+    ids:string[];
 }
 
 interface IUpdateActivityDTO{

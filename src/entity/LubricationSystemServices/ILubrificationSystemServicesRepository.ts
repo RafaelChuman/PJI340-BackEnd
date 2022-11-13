@@ -13,7 +13,7 @@ interface ICreateLubricationSystemServiceDTO {
 }
 
 interface IDeleteLubricationSystemServiceDTO {
-  id: string;
+  ids: string[];
 }
 
 interface ILubricationSystemServicesRepository {

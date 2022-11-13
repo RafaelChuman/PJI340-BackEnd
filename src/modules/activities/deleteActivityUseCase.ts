@@ -4,13 +4,13 @@ import { Response, Request } from "express";
 
 class DeleteActivityUseCase {
   async execute(request: Request, response: Response): Promise<Response> {
-    const idParam = request.query.id;
+    const idParam: string[] = request.body.ids;
 
-    if (typeof idParam == "string") {
+    if (idParam.length > 0) {
       const data: IDeleteActivityDTO = {
-        id: idParam,
+        ids: idParam,
       };
-      
+
       const collaboratorsRepository = new ActivitiesRepository();
 
       const resp = await collaboratorsRepository.deleteActivityById(data);
@@ -18,7 +18,7 @@ class DeleteActivityUseCase {
       return response.status(200).json(resp);
     }
 
-    return response.status(200);
+    return response.status(200).json("Database not modified.");
   }
 }
 
