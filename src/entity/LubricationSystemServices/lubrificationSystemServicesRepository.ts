@@ -1,5 +1,5 @@
 import { PostgresDS } from "@src/data-source";
-import { DeleteQueryBuilder, DeleteResult } from "typeorm";
+import { DeleteQueryBuilder, DeleteResult, MoreThanOrEqual } from "typeorm";
 import {
   ILubricationSystemServicesRepository,
   ICreateLubricationSystemServiceDTO,
@@ -26,10 +26,42 @@ class LubricationSystemServicesRepository
     return product;
   }
 
-  async list(ERId: string): Promise<LubrificationSystemServices[]> {
-    //const products = await PostgresDS.manager.find(LubricationSystemServices);
-    //const result = await PostgresDS.manager.find(LubricationSystemServices);
+  
+  async listAddByMonth(date: Date): Promise<LubrificationSystemServices[]> {
+    const query = PostgresDS.manager
+      .createQueryBuilder(
+        LubrificationSystemServices,
+        "LubrificationSystemServices"
+      )
+      .select(`date_trunc('day', "createdAt") As date, sum(add) AS count`)
+      .where(`date_part('year', "createdAt") = ${date.getFullYear()}`)
+      .where(`date_part('month', "createdAt") = ${date.getMonth() + 1}`)
+      .groupBy(`1`);
 
+    const lubrificationSystemServices = await query.execute();
+
+    console.log(lubrificationSystemServices);
+
+    return lubrificationSystemServices;
+  }
+
+  async listByMonth(date: Date): Promise<LubrificationSystemServices[]> {
+    const query = PostgresDS.manager
+      .createQueryBuilder(
+        LubrificationSystemServices,
+        "LubrificationSystemServices"
+      )
+      .select(`date_trunc('day', "createdAt") As date, count(id) AS count`)
+      .where(`date_part('year', "createdAt") = ${date.getFullYear()}`)
+      .where(`date_part('month', "createdAt") = ${date.getMonth() + 1}`)
+      .groupBy(`1`);
+
+    const lubrificationSystemServices = await query.execute();
+
+    return lubrificationSystemServices;
+  }
+
+  async list(ERId: string): Promise<LubrificationSystemServices[]> {
     const LubricationSystemServicesRepository =
       PostgresDS.manager.getRepository(LubrificationSystemServices);
 
@@ -45,15 +77,10 @@ class LubricationSystemServicesRepository
         },
       },
     });
-    // const query = PostgresDS.manager
-    //   .createQueryBuilder<LubricationSystemServices>("LubricationSystemServices", "l")
-    //   .innerJoinAndSelect("l.collaborator", "c")
-    //   .innerJoinAndSelect("l.activity", "a");
-
-    //const result = await query.getMany();
 
     return result;
   }
+
   async deleteById(
     data: IDeleteLubricationSystemServiceDTO
   ): Promise<DeleteResult> {

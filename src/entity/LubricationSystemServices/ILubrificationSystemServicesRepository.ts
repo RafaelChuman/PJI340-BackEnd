@@ -25,6 +25,8 @@ interface ILubricationSystemServicesRepository {
   // turnAdmin(user: User): User;
   deleteById(data: IDeleteLubricationSystemServiceDTO): Promise<DeleteResult>;
   list(ERId:string): Promise<LubrificationSystemServices[]>;
+  listByMonth(date:Date): Promise<LubrificationSystemServices[]>;
+  listAddByMonth(date: Date): Promise<LubrificationSystemServices[]>;
 }
 
 export {
