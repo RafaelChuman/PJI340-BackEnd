@@ -6,6 +6,7 @@ import {
   createZoneUseCase,
   deleteZoneUseCase,
   listZoneUseCase,
+  updateZoneUseCase,
 } from "@src/modules/zones";
 import { ensureIsAdmin } from "@src/midlewares/ensureIsAdmin";
 
@@ -23,6 +24,10 @@ zonesRoutes.get("/", (request, response) =>
 
 zonesRoutes.delete("/", (request, response) =>
   deleteZoneUseCase.execute(request, response)
+);
+
+zonesRoutes.put("/", (request, response) =>
+  updateZoneUseCase.execute(request, response)
 );
 
 // zonesRoutes.patch("/", uploadPhoto.single("Zones"), ensureAuthenticated,

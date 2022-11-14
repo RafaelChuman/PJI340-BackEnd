@@ -4,6 +4,7 @@ import {
   createActivity,
   deleteActivity,
   listActivities,
+  updateActivity,
 } from "@src/modules/activities";
 import { Router } from "express";
 
@@ -20,5 +21,12 @@ activitiesRoutes.get("/", (request, response) =>
 activitiesRoutes.delete("/", (request, response) =>
   deleteActivity.execute(request, response)
 );
+
+
+activitiesRoutes.put("/", (request, response) =>
+  updateActivity.execute(request, response)
+);
+
+
 
 export { activitiesRoutes };
