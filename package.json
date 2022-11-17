@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "build": "ts-node-transpile-only -r tsconfig-paths/register src/server.ts",
+    "build-erro": "ts-node-transpile-only -r tsconfig-paths/register src/server.ts",
+    "build": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "proc": "ts-node -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "preview": "vite preview",
     "migration": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn ./node_modules/typeorm/cli.js migration:run --dataSource src/data-source.ts",
