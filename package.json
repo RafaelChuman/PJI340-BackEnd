@@ -2,11 +2,8 @@
   "name": "pji340-backend",
   "private": true,
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.ts",
   "license": "MIT",
-  "engines": {
-    "node": "14.x"
-  },
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "build": "ts-node-transpile-only -r tsconfig-paths/register src/server.ts",
